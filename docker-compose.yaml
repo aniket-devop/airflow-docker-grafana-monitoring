@@ -90,7 +90,7 @@ x-airflow-common:
 
 services:
   grafana:
-    image: grafana/grafana:latest
+    image: grafana/grafana:13.2.0
     container_name: grafana
     environment:
       GF_SERVER_HTTP_ADDR: 0.0.0.0
@@ -103,7 +103,7 @@ services:
       - prometheus
 
   prometheus:
-    image: prom/prometheus:latest
+    image: prom/prometheus:v3.13.2
     container_name: prometheus
     volumes:
       - ./prometheus/prometheus.yml:/etc/prometheus/prometheus.yml
@@ -112,7 +112,7 @@ services:
     restart: always
 
   statsd-exporter:
-    image: prom/statsd-exporter:latest
+    image: prom/statsd-exporter:v0.29.0
     container_name: statsd-exporter
     command:
       - "--statsd.listen-udp=:9125"
